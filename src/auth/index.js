@@ -1,5 +1,5 @@
-import { verifyJWT } from "./tools.js";
-import UserModel from "../users/schema.js";
+import { verifyJWT } from './tools.js';
+import UserModel from '../users/schema.js';
 
 export const jwtAuthMiddleware = async (req, res, next) => {
   try {
@@ -8,17 +8,24 @@ export const jwtAuthMiddleware = async (req, res, next) => {
 
     const user = await UserModel.findOne({ _id: decoded._id })
       .populate({
-        path: "trips",
+        path: 'trips',
         populate: {
-          path: "participants",
-          select: ["username", "email", "profilePic", "_id"],
+          path: 'participants',
+          select: ['username', 'email', 'profilePic', '_id'],
         },
       })
       .populate({
-        path: "reviews",
+        path: 'trips',
         populate: {
-          path: "user",
-          select: ["username", "email", "_id", "profilePic"],
+          path: 'owner',
+          select: ['username', 'email', 'profilePic', '_id'],
+        },
+      })
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'user',
+          select: ['username', 'email', '_id', 'profilePic'],
         },
       });
 

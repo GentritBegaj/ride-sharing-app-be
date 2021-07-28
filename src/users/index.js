@@ -78,7 +78,6 @@ router.get('/logout', jwtAuthMiddleware, async (req, res, next) => {
     res.clearCookie('refreshToken');
     req.user.refreshToken = '';
     await req.user.save();
-    // res.redirect("/login");
     res.send('Logged out');
   } catch (error) {
     console.log(error);
@@ -109,9 +108,9 @@ router.get('/me', jwtAuthMiddleware, async (req, res, next) => {
   }
 });
 
-router.get('/:id', jwtAuthMiddleware, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
-    const user = await UserModel.findById(req.params.id);
+    const user = await UserModel.findById(req.params.id).populate('trips');
     if (!user) {
       throw new Error();
     }
