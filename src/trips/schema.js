@@ -7,7 +7,6 @@ const TripSchema = new Schema(
     originCity: { type: String, required: true },
     destinationCity: { type: String, required: true },
     owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    // participants: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     participants: [
       {
         _id: { type: Schema.Types.ObjectId, ref: 'User' },

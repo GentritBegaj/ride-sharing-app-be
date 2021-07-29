@@ -41,7 +41,9 @@ router.get('/', async (req, res, next) => {
     let maxSeatsLeft = query.criteria.seatsLeft;
     query.criteria.seatsLeft = { $gte: maxSeatsLeft }; // Do this to find trips with minimum required seats or more
 
-    const trips = await TripModel.find(query.criteria).populate('owner');
+    const trips = await TripModel.find(query.criteria)
+      .populate('owner')
+      .populate('participants._id');
     res.status(200).send(trips);
   } catch (error) {
     console.log(error);
@@ -51,7 +53,9 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const trip = await TripModel.findById(req.params.id).populate('owner');
+    const trip = await TripModel.findById(req.params.id)
+      .populate('owner')
+      .populate('participants._id');
     if (!trip) {
       const error = new Error();
       error.httpStatusCode = 404;
