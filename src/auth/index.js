@@ -18,7 +18,7 @@ export const jwtAuthMiddleware = async (req, res, next) => {
         path: 'trips',
         populate: {
           path: 'owner',
-          select: ['username', 'email', 'profilePic', '_id'],
+          select: ['username', 'email', 'profilePic', '_id', 'reviews'],
         },
       })
       .populate({

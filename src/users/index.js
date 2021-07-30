@@ -110,7 +110,15 @@ router.get('/me', jwtAuthMiddleware, async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const user = await UserModel.findById(req.params.id).populate('trips');
+    const user = await UserModel.findById(req.params.id)
+      .populate('trips')
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'user',
+          select: ['username', 'profilePic', 'email', '_id'],
+        },
+      });
     if (!user) {
       throw new Error();
     }
@@ -159,8 +167,12 @@ router.delete('/me', jwtAuthMiddleware, async (req, res, next) => {
 
 router.post('/:userId', jwtAuthMiddleware, async (req, res, next) => {
   try {
-    const review = new ReviewModel({ ...req.body, user: req.user._id });
-    // const review = await newReview.save();
+    const review = new ReviewModel({
+      ...req.body,
+      user: req.user._id,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
 
     const updatedUser = await UserModel.findOneAndUpdate(
       { _id: req.params.userId },

@@ -42,7 +42,16 @@ router.get('/', async (req, res, next) => {
     query.criteria.seatsLeft = { $gte: maxSeatsLeft }; // Do this to find trips with minimum required seats or more
 
     const trips = await TripModel.find(query.criteria)
-      .populate('owner')
+      .populate({
+        path: 'owner',
+        select: ['username', 'profilePic', '_id', 'email'],
+      })
+      .populate({
+        path: 'owner',
+        populate: {
+          path: 'reviews',
+        },
+      })
       .populate('participants._id');
     res.status(200).send(trips);
   } catch (error) {
