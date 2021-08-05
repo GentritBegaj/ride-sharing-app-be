@@ -10,7 +10,7 @@ import {
   unauthorizedErrorHandler,
 } from './errorHandlers.js';
 import cookieParser from 'cookie-parser';
-import cookieSession = require('cookie-session')
+import cookieSession from 'cookie-session';
 import mongoose from 'mongoose';
 import usersRoutes from './users/index.js';
 import tripsRoutes from './trips/index.js';
@@ -40,9 +40,7 @@ const io = new Server(server, {
 app.use(express.json());
 // app.use(cookieParser());
 
-app.use(cookieSession({secret: process.env.SECRET_KEY
-    secureProxy: true}))
-    
+app.use(cookieSession({ secret: process.env.SECRET_KEY, secureProxy: true }));
 
 app.use('/users', usersRoutes);
 app.use('/trips', tripsRoutes);
