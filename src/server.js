@@ -24,7 +24,9 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 const server = createServer(app);
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(
+  cors({ origin: 'https://rideshare-app-fe.herokuapp.com', credentials: true })
+);
 
 const io = new Server(server, {
   allowEIO3: true,
