@@ -105,7 +105,7 @@ app.post('/payment', async (req, res, next) => {
 });
 
 app.get('/', (req, res, next) => {
-  res.status.json('OK');
+  res.status(200).json('OK');
 });
 
 app.use(badRequestErrorHandler);
