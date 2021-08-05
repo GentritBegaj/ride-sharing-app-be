@@ -104,6 +104,10 @@ app.post('/payment', async (req, res, next) => {
   }
 });
 
+app.get('/', (req, res, next) => {
+  res.status.json('OK');
+});
+
 app.use(badRequestErrorHandler);
 app.use(notFoundErrorHandler);
 app.use(forbiddenErrorHandler);
