@@ -4,6 +4,7 @@ specifiers:
   bcrypt: ^5.0.1
   cloudinary: ^1.26.2
   cookie-parser: ^1.4.5
+  cookie-session: ^1.4.0
   cors: ^2.8.5
   dotenv: ^10.0.0
   express: ^4.17.1
@@ -21,6 +22,7 @@ dependencies:
   bcrypt: 5.0.1
   cloudinary: 1.26.2
   cookie-parser: 1.4.5
+  cookie-session: 1.4.0
   cors: 2.8.5
   express: 4.17.1
   express-list-endpoints: 5.0.0
@@ -295,6 +297,14 @@ packages:
       cookie-signature: 1.0.6
     dev: false
 
+  /cookie-session/1.4.0:
+    resolution: {integrity: sha512-0hhwD+BUIwMXQraiZP/J7VP2YFzqo6g4WqZlWHtEHQ22t0MeZZrNBSCxC1zcaLAs8ApT3BzAKizx9gW/AP9vNA==}
+    dependencies:
+      cookies: 0.8.0
+      debug: 2.6.9
+      on-headers: 1.0.2
+    dev: false
+
   /cookie-signature/1.0.6:
     resolution: {integrity: sha1-4wOogrNCzD7oylE6eZmXNNqzriw=}
     dev: false
@@ -307,6 +317,14 @@ packages:
   /cookie/0.4.1:
     resolution: {integrity: sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==}
     engines: {node: '>= 0.6'}
+    dev: false
+
+  /cookies/0.8.0:
+    resolution: {integrity: sha512-8aPsApQfebXnuI+537McwYsDtjVxGm8gTIzQI3FDW6t5t/DAhERxtnbEPN/8RX+uZthoz4eCOgloXaE5cYyNow==}
+    engines: {node: '>= 0.8'}
+    dependencies:
+      depd: 2.0.0
+      keygrip: 1.1.0
     dev: false
 
   /core-js/3.6.5:
@@ -362,6 +380,11 @@ packages:
   /depd/1.1.2:
     resolution: {integrity: sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=}
     engines: {node: '>= 0.6'}
+    dev: false
+
+  /depd/2.0.0:
+    resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
+    engines: {node: '>= 0.8'}
     dev: false
 
   /destroy/1.0.4:
@@ -671,6 +694,13 @@ packages:
     resolution: {integrity: sha512-STHz9P7X2L4Kwn72fA4rGyqyXdmrMSdxqHx9IXon/FXluXieaFA6KJ2upcHAHxQPQ0LeM/OjLrhFxifHewOALQ==}
     dev: false
 
+  /keygrip/1.1.0:
+    resolution: {integrity: sha512-iYSchDJ+liQ8iwbSI2QqsQOvqv58eJCEanyJPJi+Khyu8smkcKSFUCbPwzFcL7YVtZ6eONjqRX/38caJ7QjRAQ==}
+    engines: {node: '>= 0.6'}
+    dependencies:
+      tsscmp: 1.0.6
+    dev: false
+
   /lodash.includes/4.3.0:
     resolution: {integrity: sha1-YLuYqHy5I8aMoeUTJUgzFISfVT8=}
     dev: false
@@ -967,6 +997,11 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       ee-first: 1.1.1
+    dev: false
+
+  /on-headers/1.0.2:
+    resolution: {integrity: sha512-pZAE+FJLoyITytdqK0U5s+FIpjN0JP3OzFi/u8Rx+EV5/W+JTWGXG8xFzevE7AjBfDqHv/8vL8qQsIhHnqRkrA==}
+    engines: {node: '>= 0.8'}
     dev: false
 
   /once/1.4.0:
@@ -1269,6 +1304,11 @@ packages:
   /toidentifier/1.0.0:
     resolution: {integrity: sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==}
     engines: {node: '>=0.6'}
+    dev: false
+
+  /tsscmp/1.0.6:
+    resolution: {integrity: sha512-LxhtAkPDTkVCMQjt2h6eBVY28KCjikZqZfMcC15YBeNjkgUpdCfBu5HoiOTDu86v6smE8yOjyEktJ8hlbANHQA==}
+    engines: {node: '>=0.6.x'}
     dev: false
 
   /type-is/1.6.18:
