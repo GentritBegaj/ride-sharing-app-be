@@ -52,11 +52,11 @@ router.post('/login', async (req, res, next) => {
     if (user) {
       const tokens = await authenticate(user);
       res.cookie('accessToken', tokens.accessToken, {
-        sameSite: 'lax',
+        sameSite: 'none',
         httpOnly: true,
       });
       res.cookie('refreshToken', tokens.refreshToken, {
-        sameSite: 'lax',
+        sameSite: 'none',
         httpOnly: true,
       });
       res.status(200).send({
