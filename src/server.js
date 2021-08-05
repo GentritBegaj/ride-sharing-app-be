@@ -31,7 +31,7 @@ app.use(
 const io = new Server(server, {
   allowEIO3: true,
   cors: {
-    origin: 'http://localhost:3000',
+    origin: 'https://rideshare-app-fe.herokuapp.com/',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   },
 });
