@@ -115,6 +115,7 @@ mongoose
     useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
   })
   .then(
     server.listen(port, () =>

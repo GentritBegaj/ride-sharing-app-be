@@ -10,7 +10,7 @@ const UserSchema = new Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String },
     dateOfBirth: { type: Date },
-    profilePic: { type: String },
+    profilePic: { type: String, default: '' },
     gender: { type: String, enum: ['Male', 'Female', 'Other'] },
     bio: { type: String },
     trips: [{ type: Schema.Types.ObjectId, ref: 'Trip' }],
