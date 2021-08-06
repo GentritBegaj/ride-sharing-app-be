@@ -24,14 +24,12 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 const server = createServer(app);
-app.use(
-  cors({ origin: 'https://rideshare-app-fe.herokuapp.com', credentials: true })
-);
+app.use(cors({ origin: 'http://rideshareapp.xyz/', credentials: true }));
 
 const io = new Server(server, {
   allowEIO3: true,
   cors: {
-    origin: 'https://rideshare-app-fe.herokuapp.com/',
+    origin: 'http://rideshareapp.xyz/',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   },
 });
