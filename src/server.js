@@ -16,7 +16,6 @@ import tripsRoutes from './trips/index.js';
 import conversationsRoutes from './conversations/index.js';
 import messagesRoutes from './messages/index.js';
 import Stripe from 'stripe';
-import UserModel from './users/schema.js';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET);
 
@@ -24,12 +23,12 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 const server = createServer(app);
-app.use(cors({ origin: 'http://rideshareapp.xyz', credentials: true }));
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 const io = new Server(server, {
   allowEIO3: true,
   cors: {
-    origin: 'http://rideshareapp.xyz',
+    origin: 'http://localhost:3000',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   },
 });
@@ -76,7 +75,6 @@ io.on('connection', (socket) => {
     activeSockets = activeSockets
       .filter((u) => u.socketId !== socket.id)
       .filter((u) => u.userId !== undefined);
-    console.log(activeSockets, 'BBBBBBBBBBBBB');
     io.sockets.emit('getUsers', activeSockets);
   });
 });
