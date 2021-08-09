@@ -51,11 +51,19 @@ router.post('/login', async (req, res, next) => {
 
     if (user) {
       const tokens = await authenticate(user);
+      // res.cookie('accessToken', JSON.stringify(localeObj), {
+      //   // maxAge: new Date() * 0.001 + 300,
+      //   domain: 'rideshareapp.xyz',
+      //   secure: true,
+      //   sameSite: 'none',
+      // });
       res.cookie('accessToken', tokens.accessToken, {
+        domain: 'rideshareapp.xyz',
         sameSite: 'none',
         httpOnly: true,
       });
       res.cookie('refreshToken', tokens.refreshToken, {
+        domain: 'rideshareapp.xyz',
         sameSite: 'none',
         httpOnly: true,
       });
