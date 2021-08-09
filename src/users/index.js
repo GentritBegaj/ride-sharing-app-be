@@ -58,14 +58,17 @@ router.post('/login', async (req, res, next) => {
       //   sameSite: 'none',
       // });
       res.cookie('accessToken', tokens.accessToken, {
+        maxAge: new Date() * 0.001 + 300,
         domain: 'rideshareapp.xyz',
+        secure: true,
         sameSite: 'none',
-        httpOnly: true,
+        // httpOnly: true,
       });
       res.cookie('refreshToken', tokens.refreshToken, {
         domain: 'rideshareapp.xyz',
+        secure: true,
         sameSite: 'none',
-        httpOnly: true,
+        // httpOnly: true,
       });
       res.status(200).send({
         accessToken: tokens.accessToken,
