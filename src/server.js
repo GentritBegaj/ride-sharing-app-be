@@ -23,12 +23,12 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 const server = createServer(app);
-app.use(cors({ origin: 'http://web.rideshareapp.xyz', credentials: true }));
+app.use(cors({ origin: 'http://rideshareapp.xyz', credentials: true }));
 
 const io = new Server(server, {
   allowEIO3: true,
   cors: {
-    origin: 'http://web.rideshareapp.xyz',
+    origin: 'http://rideshareapp.xyz',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   },
 });
