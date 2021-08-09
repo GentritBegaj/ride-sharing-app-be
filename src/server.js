@@ -28,7 +28,7 @@ const server = createServer(app);
 const io = new Server(server, {
   allowEIO3: true,
   cors: {
-    origin: 'http://rideshareapp.xyz',
+    origin: 'https://rideshareapp.xyz',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   },
