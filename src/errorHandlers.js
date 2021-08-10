@@ -1,6 +1,6 @@
 export const badRequestErrorHandler = (err, req, res, next) => {
   if (err.httpStatusCode === 400) {
-    res.status(400).send("Bad request");
+    res.status(400).send(err.message || 'Bad request');
   } else {
     next(err);
   }
@@ -8,7 +8,7 @@ export const badRequestErrorHandler = (err, req, res, next) => {
 
 export const unauthorizedErrorHandler = (err, req, res, next) => {
   if (err.httpStatusCode === 401) {
-    res.status(401).send("Unauthorized request");
+    res.status(401).send(err.message || 'Unauthorized request');
   } else {
     next(err);
   }
@@ -16,7 +16,7 @@ export const unauthorizedErrorHandler = (err, req, res, next) => {
 
 export const forbiddenErrorHandler = (err, req, res, next) => {
   if (err.httpStatusCode === 403) {
-    res.status(403).send("Forbidden");
+    res.status(403).send(err.message || 'Forbidden');
   } else {
     next(err);
   }
@@ -24,12 +24,12 @@ export const forbiddenErrorHandler = (err, req, res, next) => {
 
 export const notFoundErrorHandler = (err, req, res, next) => {
   if (err.httpStatusCode === 404) {
-    res.status(404).send("Not found");
+    res.status(404).send(err.message || 'Not found');
   } else {
     next(err);
   }
 };
 
 export const catchAllErrorHandler = (err, req, res, next) => {
-  res.status(500).send("Generic Server Error");
+  res.status(500).send('Generic Server Error');
 };

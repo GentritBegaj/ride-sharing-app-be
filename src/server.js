@@ -33,10 +33,16 @@ const server = createServer(app);
 const whiteList = [process.env.FE_URL_DEV, process.env.FE_URL_PROD];
 const corsOptions = {
   origin: function (origin, next) {
+    console.log('AAAAAAAAA');
     if (whiteList.indexOf(origin) !== -1) {
+      console.log('NNNNNN');
       next(null, true);
     } else {
-      next(new ErrorResponse(`NOT ALLOWED BY CORS`, 403));
+      console.log('RRRRRRR');
+      const error = new Error('Not allowed by CORS');
+      error.message = 'Not allowed by CORS';
+      error.httpStatusCode = 403;
+      next(error);
     }
   },
   credentials: true,
