@@ -23,17 +23,35 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 const server = createServer(app);
-app.use(cors({ origin: 'http://www.rideshareapp.xyz', credentials: true }));
+// app.use(
+//   cors({
+//     origin: ['http://www.rideshareapp.xyz', 'http://localhost:3000'],
+//     credentials: true,
+//   })
+// );
+
+const whiteList = [process.env.FE_URL_DEV, process.env.FE_URL_PROD];
+const corsOptions = {
+  origin: function (origin, next) {
+    if (whiteList.indexOf(origin) !== -1) {
+      next(null, true);
+    } else {
+      next(new ErrorResponse(`NOT ALLOWED BY CORS`, 403));
+    }
+  },
+  credentials: true,
+};
 
 const io = new Server(server, {
   allowEIO3: true,
   cors: {
-    origin: 'https://rideshareapp.xyz',
+    origin: [process.env.FE_URL_PROD, process.env.FE_URL_DEV],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   },
 });
 
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
