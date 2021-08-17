@@ -60,13 +60,13 @@ router.post('/login', async (req, res, next) => {
       res.cookie('accessToken', tokens.accessToken, {
         // maxAge: new Date() * 0.001 + 300,
         // domain: 'web.rideshareapp.xyz',
-        secure: true,
+        secure: false,
         sameSite: 'none',
         httpOnly: true,
       });
       res.cookie('refreshToken', tokens.refreshToken, {
         // domain: 'web.rideshareapp.xyz',
-        secure: true,
+        secure: false,
         sameSite: 'none',
         httpOnly: true,
       });
